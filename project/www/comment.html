@@ -32,7 +32,18 @@
 				console.log(this.responseText);
 				let data = JSON.parse(this.responseText);
 				console.log(data);
+				show(data);
 			});
+		}
+
+		function show(data) {
+			let board = document.querySelector("#board");
+			board.innerHTML = ""; // clear the screen
+			let message;
+			for (let i = 0; i < data.length; i++) {
+				message = data[i];
+				console.log(message);
+			}
 		}
 
 		window.addEventListener("load", function () {
