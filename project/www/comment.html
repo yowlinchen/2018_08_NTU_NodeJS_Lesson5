@@ -26,6 +26,12 @@
 				alert(this.responseText);
 			});
 		}
+
+		function get() {
+			ajax("get", "/get", "", function () {
+				console.log(this.responseText);
+			});
+		}
 	</script>
 </head>
 

@@ -44,6 +44,18 @@ app.post("/post", function (req, res) {
     // res.send("OK");
 });
 
+// use get method to take care of /get
+app.get("/get", function (req, res) {
+    let ref = database.ref("/messages");
+    ref.once("value", function (snapshot) {
+        let data = [];
+        snapshot.forEach(function (messageSnapShot) {
+            data.push(messageSnapShot.val());
+        });
+        res.send(data);
+    });
+});
+
 app.listen(3000, function () {
     console.log("Server Started");
 });
