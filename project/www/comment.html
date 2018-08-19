@@ -42,7 +42,8 @@
 			let message;
 			for (let i = 0; i < data.length; i++) {
 				message = data[i];
-				console.log(message);
+				// console.log(message);
+				board.innerHTML = message.name.bold() + ": " + message.content + "<hr/>" + board.innerHTML;
 			}
 		}
 
