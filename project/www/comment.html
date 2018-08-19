@@ -32,7 +32,7 @@
 
 		function get() {
 			ajax("get", "/get", "", function () {
-				console.log(this.responseText);
+				// console.log(this.responseText);
 				let data = JSON.parse(this.responseText);
 				console.log(data);
 				show(data);
@@ -52,6 +52,7 @@
 
 		window.addEventListener("load", function () {
 			get();
+			window.setInterval(get, 5000);
 		});
 	</script>
 </head>
