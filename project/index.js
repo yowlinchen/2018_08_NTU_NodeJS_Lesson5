@@ -25,7 +25,23 @@ app.use(parser.urlencoded({
 
 // use post method to take care of /post
 app.post("/post", function (req, res) {
-    res.send("OK");
+    let name = req.body.name;
+    let content = req.body.content;
+    let time = (new Date()).getTime();
+    // Put into database
+    let ref = database.ref("/messages");
+    ref.push({
+        name: name,
+        content: content,
+        time: time
+    }, function (error) {
+        if (error) {
+            res.send("Error");
+        } else {
+            res.send("OK");
+        }
+    });
+    // res.send("OK");
 });
 
 app.listen(3000, function () {
