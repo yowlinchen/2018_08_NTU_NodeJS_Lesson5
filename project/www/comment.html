@@ -30,8 +30,14 @@
 		function get() {
 			ajax("get", "/get", "", function () {
 				console.log(this.responseText);
+				let data = JSON.parse(this.responseText);
+				console.log(data);
 			});
 		}
+
+		window.addEventListener("load", function () {
+			get();
+		});
 	</script>
 </head>
 
