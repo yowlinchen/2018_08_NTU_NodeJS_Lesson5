@@ -30,8 +30,10 @@
 			});
 		}
 
+		let time = 0;
+
 		function get() {
-			ajax("get", "/get", "", function () {
+			ajax("get", "/get", "time=" + time, function () {
 				// console.log(this.responseText);
 				let data = JSON.parse(this.responseText);
 				console.log(data);
@@ -41,12 +43,13 @@
 
 		function show(data) {
 			let board = document.querySelector("#board");
-			board.innerHTML = ""; // clear the screen
+			// board.innerHTML = ""; // clear the screen
 			let message;
 			for (let i = 0; i < data.length; i++) {
 				message = data[i];
 				// console.log(message);
 				board.innerHTML = message.name.bold() + ": " + message.content + "<hr/>" + board.innerHTML;
+				time = message.time + 1;
 			}
 		}
 

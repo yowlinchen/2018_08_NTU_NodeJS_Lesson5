@@ -46,8 +46,9 @@ app.post("/post", function (req, res) {
 
 // use get method to take care of /get
 app.get("/get", function (req, res) {
+    let time = parseInt(req.query.time);
     let ref = database.ref("/messages");
-    ref.orderByChild("time").startAt(1534672108686).once("value", function (snapshot) {
+    ref.orderByChild("time").startAt(time).once("value", function (snapshot) {
         let data = [];
         snapshot.forEach(function (messageSnapShot) {
             data.push(messageSnapShot.val());
